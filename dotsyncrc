@@ -75,12 +75,12 @@ ssh/github.pub:.ssh/github.pub
 #vim/gvimrc
 #wget/wgetrc
 #zsh/fasdrc
-#zsh/dotzsh:.zsh
-#zsh/zlogin
-#zsh/zlogout
-#zsh/zprofile
-#zsh/zshenv
-#zsh/zshrc
+zsh/dotzsh:.zsh
+zsh/zlogin
+zsh/zlogout
+zsh/zprofile
+zsh/zshenv
+zsh/zshrc
 [endfiles]
 
 # Hosts to sync
