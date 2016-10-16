@@ -24,15 +24,19 @@ dwsync.xml
 .komodotools
 nbproject
 
-# OS generated files
+# OSX generated files
 ._*
 .cache
+.sw+
 .Spotlight-V100
 .Trashes
 .DS_Store
 desktop.ini
 ehthumbs.db
 Thumbs.db
+
+# Linux:
+*~
 
 # Other dev-related files
 *.bak
@@ -46,3 +50,22 @@ svn-commit.*
 tags
 TAGS
 
+# Perl:
+blib/
+.build/
+_build/
+cover_db/
+inc/
+Build
+Build.bat
+.last_cover_stats
+Makefile
+Makefile.old
+MANIFEST.bak
+META.yml
+MYMETA.yml
+nytprof.out
+pm_to_blib
+
+# via Falcon
+sync
