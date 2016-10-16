@@ -18,12 +18,12 @@
 [files]
 # Uncomment examples below
 dotsyncrc
-#ack/ackrc
+ack/ackrc
 #aptitude
 #bin:bin
 #ctags/ctags
 #cmus
-#curl/curlrc
+curl/curlrc
 git/gitconfig
 git/gitignore
 git/gitattributes
