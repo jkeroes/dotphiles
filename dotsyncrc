@@ -24,10 +24,10 @@ dotsyncrc
 #ctags/ctags
 #cmus
 #curl/curlrc
-#git/gitconfig
-#git/gitignore
-#git/gitattributes
-#git/tigrc
+git/gitconfig
+git/gitignore
+git/gitattributes
+git/tigrc
 #git/gitk
 #gnupg
 #grc
