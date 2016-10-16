@@ -40,7 +40,7 @@ input/inputrc
 #mutt
 #mutt/muttrc
 #mutt/offlineimaprc
-#mysql/my.cnf
+mysql/my.cnf
 #ncmpcpp/config
 #ncmpcpp/error.log
 #postgresql/psqlrc
