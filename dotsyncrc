@@ -57,7 +57,14 @@ git/tigrc
 #screen/screenrc
 #shell/hushlogin
 #shell/urlview
-#ssh
+ssh/config:.ssh/config
+ssh/known_hosts:.ssh/known_hosts
+ssh/home:.ssh/home
+ssh/home.pub:.ssh/home.pub
+ssh/dreamhost:.ssh/dreamhost
+ssh/dreamhost.pub:.ssh/dreamhost.pub
+ssh/github:.ssh/github
+ssh/github.pub:.ssh/github.pub
 #subversion
 #task/task
 #task/taskrc
