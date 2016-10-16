@@ -8,18 +8,60 @@
 #
 
 # Global Settings
-ForwardAgent yes
+ForwardAgent no
 #VisualHostKey yes
 HashKnownHosts no
 #ConnectTimeout 2
 
 # My Hosts
-#Host hostname hostname.fqdn.com
-#    Hostname hostname.fqdn.com
+Host github github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/github
+    IdentitiesOnly yes
+
+# These will only work if you fully qualify the domain name.
+Host *.dreamhost.com *.newdream.net
+    IdentityFile ~/.ssh/dreamhost
+    ForwardAgent yes
+
+Host yakko yakko.dreamhost.com
+    HostName yakko.sd.dreamhost.com
+    IdentityFile ~/.ssh/dreamhost
+    ForwardAgent yes
+
+Host fubar fubar.dreamhost.com
+    Hostname fubar.dreamhost.com
+    IdentityFile ~/.ssh/dreamhost
+    ForwardAgent yes
+
+Host git git.newdream.net
+    HostName git.newdream.net
+    IdentityFile ~/.ssh/dreamhost
+    Port 29418
+
+Host josker16 josker.dreamhosters.com
+    Hostname josker16.dreamhosters.com
+    User josker16
+
+Host cloud cloud.keroes.com
+    HostName cloud.keroes.com
+    User dhc-user
+    IdentityFile ~/.ssh/dreamhost
+
+Host fallendevil.com keroes.com pdxblues.com
+    User jkeroes2
+
+Host ganesh ganesh.lan ganesh.local 192.168.1.20
+    HostName ganesh
+    IdentityFile ~/.ssh/home
+    User root
 
 # Default
 Host *
-    #User username
+    User jkeroes
+    ServerAliveInterval 60
+    IdentityFile ~/.ssh/home
     StrictHostKeyChecking ask
     ServerAliveCountMax 6
     ServerAliveInterval 30
