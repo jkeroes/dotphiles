@@ -30,7 +30,7 @@ git/gitattributes
 git/tigrc
 #git/gitk
 #gnupg
-# grc
+grc
 input/editrc
 input/inputrc
 #irssi
