@@ -43,6 +43,7 @@ input/inputrc
 mysql/my.cnf
 #ncmpcpp/config
 #ncmpcpp/error.log
+perltidy/perltidyrc
 #postgresql/psqlrc
 #python/pythonrc
 #python/pylintrc
