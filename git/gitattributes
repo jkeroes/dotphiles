@@ -10,3 +10,6 @@
 # Automatically normalize line endings for all text-based files
 * text=auto
 
+# make git recognize *.txt.gz files as compressed text, such that git knows to
+# use the "gz" diff driver on them
+*.txt.gz diff=gz

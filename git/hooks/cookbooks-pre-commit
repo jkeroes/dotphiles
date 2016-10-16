@@ -1,0 +1,98 @@
+#!/bin/bash
+
+
+# Because I was having trouble getting trap to play nicely with any signal except
+# EXIT we just carry around our status and exit with it at the end
+status=0
+cookbook_name=`grep url .git/config  |awk -F "cookbooks/" '{print $2}'`
+
+function knife_test() {
+
+    local grep_code=0
+	echo "Testing Cookbook ($cookbook_name) Syntax with Knife..."
+    # Use egrep to limit to just error lines (stderr not respected by knife)
+    # Should just include lines with FATAL and
+    knife cookbook test $cookbook_name | grep_code=0
+
+    if [ "${grep_code}" == "0" ]
+    then
+        echo "Failed!..."
+        status=1
+        exit
+    else
+        echo
+        echo "Ok!..."
+    fi
+
+    return
+
+}
+
+function version_check() {
+	echo "Making sure your version does not exist on chef servers";
+	for loc in `cat ~/.chef/chef-server-locations`
+	do 
+		knife cookbook show $cookbook_name -c ~/.chef/knife-$loc-ndn.rb 2>&1
+		if [ $? -gt 0 ]; then
+			continue
+		fi
+
+		echo "$cookbook_name exists on $loc, checking to make sure version does not exist.."
+		knife cookbook show $cookbook_name -c ~/.chef/knife-$loc-ndn.rb 2>&1
+		if [ $? -gt 0 ]; then
+			echo "ERROR: version exists on $loc.chef.dreamhost.com"
+			status=1
+		fi
+	done
+}
+
+function foodcritic_test() {
+
+    echo "Using Foodcritic to lint our cookbooks..."
+
+    # Stricter Etsy rules included w/ autofail
+    # foodcritic -t any -f any -I foodcritic-rules/rules.rb cookbooks/
+
+    foodcritic .
+
+    if [ "$?" != "0" ]
+    then
+        echo "Failed!..."
+        status=1
+        exit
+    else
+        echo "Ok!..."
+    fi
+
+    return
+
+}
+
+function rspec_test() {
+
+    echo "Running Rspec on yipit cookbooks..."
+    rspec * 
+
+    if [ "$?" != "0" ]
+    then
+        echo "Failed!..."
+        status=1
+        exit
+    fi
+
+    return
+
+}
+
+# Check for syntax errors
+knife_test
+
+version_check
+
+#rspec_test
+
+if [ "$status" = "1" ]
+then
+	echo "CHECKS FAILED, YOUR DOING IT WRONG"
+fi
+exit ${status}
