@@ -1,5 +1,4 @@
-#
-# dotphiles : https://github.com/dotphiles/dotphiles
+# # dotphiles : https://github.com/dotphiles/dotphiles
 #
 # Git configuration.
 #
@@ -10,8 +9,12 @@
 # Global Config
 [user]
     name = "Joshua Keroes"
+    # email = "joshua@keroes.com"
     email = "joshua.keroes@dreamhost.com"
     #signingkey = **Your GPG ID**
+
+[branch]
+    autosetupmerge = always
 
 [branch "master"]
     remote = origin
@@ -65,6 +68,7 @@
 [alias]
     # branch
     b  = branch
+    br = branch
     bc = checkout -b
     bl = branch -v
     bL = branch -av
@@ -94,12 +98,14 @@
     r   = rebase
     ra  = rebase --abort
     rc  = rebase --continue
-    ri  = rebase --interactive --autosquash
-    ria   = -c core.editor=/bin/true -c sequence.editor=/bin/true rebase --interactive --autosquash
-    # rir   = rebase --interactive --autosquash --root
-    # rira  = -c core.editor=/bin/true -c sequence.editor=/bin/true rebase --interactive --autosquash --root
     rs  = rebase --skip
     rom = rebase origin/master
+
+    # ri  = rebase --interactive
+    ri    = rebase --interactive --autosquash
+    ria   = -c core.editor=/bin/true -c sequence.editor=/bin/true rebase --interactive --autosquash
+    # rir   = rebase --interactive --autosquash --root
+	# rira  = -c core.editor=/bin/true -c sequence.editor=/bin/true rebase --interactive --autosquash --root
 
     # commit
     c      = commit -v
@@ -119,6 +125,7 @@
     hubd = compare
 
     # index
+    s  = status
     st = status
     a  = add
     ia = add
@@ -133,16 +140,16 @@
     lm  = log --topo-order --pretty=format:'%s'
     lh  = shortlog --summary --numbered
     llf = fsck --lost-found
+    hist = log --graph --pretty='[%C(cyan)%h%Creset] %ar - %s %C(bold cyan)%d%Creset'
+    histall = log --all --graph --pretty='[%C(cyan)%h%Creset] %ar - %s %C(bold cyan)%d%Creset'
+    chadlg = "log --pretty=format:'%C(yellow)%h%Creset %ad %C(cyan)%an%Creset %s %Cblue%d%Creset' --graph --date=short"
 
     lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 
-    hist    = log       --graph --pretty='[%C(cyan)%h%Creset] %ar - %s %C(bold cyan)%d%Creset'
-    histall = log --all --graph --pretty='[%C(cyan)%h%Creset] %ar - %s %C(bold cyan)%d%Creset'
-
     # show
-    s  = show
-    sf = show --pretty="format:" --name-only
+	s  = show
+	sf = show --pretty="format:" --name-only
 
     # remote
     re  = remote
@@ -151,42 +158,40 @@
     rex = remote rm
     rem = remote rename
 
-    # fixup/squash. see also --autosquash
     # see http://is.gd/gSeOj; these are modified so if the commit being fixed
     # up already has a 'fixup! ' prefix has that prefix preserved
     fixup  = !sh -c 'git commit --no-gpg-sign -m  \"fixup! $(git log -1 --format='\\''%s'\\'' $@ | sed -e '\\''s/^fixup! //'\\'')\"' -
     squash = !sh -c 'git commit --no-gpg-sign -m \"squash! $(git log -1 --format='\\''%s'\\'' $@ | sed -e '\\''s/^squash! //'\\'')\"' -
 
-    # http://gggritso.com/human-git-aliases
-    branches  = branch -a
-    tags      = tag
-    stashes   = stash list
-    precommit = diff --cached --diff-algorithm=minimal -w
-    unstage   = reset -q HEAD --
-    discard   = checkout --
-    uncommit  = reset --mixed HEAD~
-    amend     = commit --amend
-    nevermind = !git reset --hard HEAD && git clean -d -f
+	# http://gggritso.com/human-git-aliases
+	branches = branch -a
+	tags = tag
+	stashes = stash list
+	precommit = diff --cached --diff-algorithm=minimal -w
+	unstage = reset -q HEAD --
+	discard = checkout --
+	uncommit = reset --mixed HEAD~
+	amend = commit --amend
+	nevermind = !git reset --hard HEAD && git clean -d -f
 
-    # gerrit review
-    #
-    # git review [branch_for_review]
-    # interface to pushing refs for review to Gerrit
-    # defaults to the tracked remote branch
-    # if the current branch is not tracking anything
-    # then defaults to master
-    review = "!review() {\
-        merge=$1;\
-        [ -z $merge ] && {\
-            branch=$(git for-each-ref --format='%(refname:short)' $(git symbolic-ref HEAD));\
-            merge=$(git config --get branch.$branch.merge | cut -d/ -f3-);\
-        };\
-        [ -z $merge ] && merge=master;\
-        git push origin HEAD:refs/for/$merge;\
-    };\
-    review"
 
-    # gerrit verbose review
+	# git review [branch_for_review]
+	# interface to pushing refs for review to Gerrit
+	# defaults to the tracked remote branch
+	# if the current branch is not tracking anything
+	# then defaults to master
+	review = "!review() {\
+		merge=$1;\
+		[ -z $merge ] && {\
+			branch=$(git for-each-ref --format='%(refname:short)' $(git symbolic-ref HEAD));\
+			merge=$(git config --get branch.$branch.merge | cut -d/ -f3-);\
+		};\
+		[ -z $merge ] && merge=master;\
+		git push origin HEAD:refs/for/$merge;\
+	};\
+	review"
+
+    # verbose review
     #
     # git vreview [branch_for_review]
     # interface to pushing refs for review to Gerrit
@@ -204,18 +209,28 @@
         git push origin HEAD:refs/for/$merge;\
     };\
 review"
+	whatpath = !echo $PATH
+	alias = config --get-regexp ^alias\\.
+	oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne \"s/^ //p\" | head -1' -
+	diverges = !zsh -c 'git rev-list --boundary ... | grep ^- | cut -c2-'
 
-    # aliases
-    alias = config --get-regexp ^alias\\.
+; find the commit that introduced an unexpected change to an integration
+; branch (that is, not looking at commits on merged-in branches but just
+; the changes introduced by the merge itself).  The range is optional but
+; nicely limiting; as is the filespec (multiple legal).  Shows a standard
+; log, and a diff/patch of the relevent changes; skips all other commits.
+;
+; e.g. git log -p -m --first-parent 7f303ce19b~.. -- root/js/search/search-form.js
+;
+; I spent way too much time figuring this out. *le sigh*
+; via cweyl 2015-12-07
+where-what = log -p -m --first-parent
 
-    # who what where
-    whatpath        = !echo $PATH
-    oldest-ancestor = !zsh -c 'diff -u <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | sed -ne \"s/^ //p\" | head -1' -
-    diverges        = !zsh -c 'git rev-list --boundary ... | grep ^- | cut -c2-'
+; branches, sorted by commiterdate, with bells and whistles
+gbd = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 
 [push]
-    default = matching
-    # default = upstream
+    default = upstream
 
 [url "git@github.com:"]
     insteadof = github:
@@ -234,17 +249,16 @@ review"
     binary = true
     
 [filter "lfs"]
-    clean = git lfs clean %f
-    smudge = git lfs smudge %f
-    required = true
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
 
 [rerere]
-    enabled = true
+	enabled = true
 
 # Enable bitmap pack index functionality for speed boost.
 [repack]
     writeBitmaps = true
-
 [receive]
     denyDeleteCurrent = true
     shallowUpdate = true
