@@ -30,9 +30,9 @@ git/gitattributes
 git/tigrc
 #git/gitk
 #gnupg
-#grc
-#input/editrc
-#input/inputrc
+# grc
+input/editrc
+input/inputrc
 #irssi
 #mpd/mpd.conf
 #mercurial/hgrc
