@@ -105,8 +105,9 @@ zstyle ':dotzsh:module:git' aliases 'yes'
 export CLICOLOR=1 # for colorized ls output
 
 # For base16-vim
-export BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-default.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# 2016-10-16 - TODO
+# export BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-default.dark.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 ### Theme module
 # Set default theme to load.
