@@ -139,10 +139,15 @@ alias myscdb=scdb
 alias gitrbr='for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r'
 alias gh='git hist'
 alias gh='git hist --all'
-alias r='git review && all-gerrit'
+alias r='git review && rvs'
 alias gs='git show'
 alias gd='git diff'
 alias gdc='git diff --cached'
+
+# move current branch on to origin/master
+alias rebase='git rebase origin/master'
+
+alias pushdone='pushbullet push i6 note done'
 
 alias gg='git grep -E'
 ggt()  { gg -i $* -- '*.t' }
@@ -152,6 +157,10 @@ ggp()  { gg -i $* -- '*.pm' '*.t' '*.pl' 'bin/' }
 ggs()  { gg -i "sub.*$*" -- '*.pm' '*.t' '*.pl' 'bin/' }
 gcaa() { gca --amend }
 syslocate() { locate $* | grep -vE '^/home|^/root' }
+
+# fixes
+alias more=less
+alias 'pkill -fl'='pkill -f'
 
 # work
 if [ -d /ndn/etc ]; then
@@ -187,6 +196,13 @@ if [ -d /ndn/etc ]; then
     }
 
     cd ~/ndn
+
+    # use envperl
+    test -d /opt/ndn-perl/jkeroes && ndnperl user
+
 fi
+
+# use Perl local::lib
+test -d ~/perl5 && eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
