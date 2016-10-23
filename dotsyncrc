@@ -90,12 +90,13 @@ zsh/zshrc
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
 fiji                              git=ANY               # home
+imp                               git=ANY               # media
+# imp                             rsync=fiji.local      # media
 # soma                            git=ANY               # work
 # viva                            git=ANY               # dj
-imp                               rsync=fiji.local      # media
 # keroes.com                      git=ANY               # test
 # franck                          git=ANY               # aka keroes.com
-# fubar                           git=ANY               # work
+fubar                             rsync=fiji.local      # work
 # yakko                           git=ANY               # work
 [endhosts]
 
