@@ -53,10 +53,6 @@ Host cloud cloud.keroes.com
 Host fallendevil.com keroes.com pdxblues.com
     User jkeroes2
 
-Host ganesh ganesh.lan ganesh.local 192.168.1.20
-    HostName ganesh
-    IdentityFile ~/.ssh/home
-    User root
 
 # Default
 Host *
