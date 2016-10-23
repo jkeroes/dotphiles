@@ -19,6 +19,7 @@ Host github github.com
     User git
     IdentityFile ~/.ssh/github
     IdentitiesOnly yes
+    ForwardAgent yes
 
 # These will only work if you fully qualify the domain name.
 Host *.dreamhost.com *.newdream.net

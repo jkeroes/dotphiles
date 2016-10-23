@@ -89,10 +89,10 @@ zsh/zshrc
 # Hosts to sync
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
-# fiji                            git=ANY               # home
+fiji                              git=ANY               # home
 # soma                            git=ANY               # work
 # viva                            git=ANY               # dj
-imp                             git=ANY               # media
+imp                               rsync=fiji.local      # media
 # keroes.com                      git=ANY               # test
 # franck                          git=ANY               # aka keroes.com
 # fubar                           git=ANY               # work

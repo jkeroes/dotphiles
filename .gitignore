@@ -15,8 +15,7 @@ cmus/cache
 cmus/*-history
 cmus/*.pl
 ssh/id*
-ssh/dreamhost.d/
-ssh/local.d/home
+ssh/dreamhost.d
 ssh/home.d
 ssh/home-rsa.d
 ssh/github.d

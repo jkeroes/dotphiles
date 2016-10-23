@@ -12,9 +12,15 @@ cmus/cache
 cmus/*-history
 cmus/*.pl
 ssh/id*
+ssh/dreamhost.d
+ssh/environment*
+ssh/local.d/home
+ssh/home.d
+ssh/home-rsa.d
+ssh/github.d
 ssh/environment*
 ssh/known_hosts
-ssh/master/*
+ssh/master
 gnupg/secring.gpg
 gnupg/sshcontrol
 gnupg/gpg-agent.env
