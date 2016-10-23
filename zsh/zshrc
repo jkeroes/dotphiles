@@ -74,8 +74,8 @@ zstyle ':dotzsh:module:completion' expand-global-aliases 'yes'
 
 ### SSH module
 zstyle ':dotzsh:module:ssh:agent' forwarding 'yes'
-#zstyle ':dotzsh:module:ssh:aliases' hosts 'yes'
-zstyle ':dotzsh:module:ssh:agent' identities 'id_dsa' 'github_rsa' 'jkeroes_dreamhost'
+zstyle ':dotzsh:module:ssh:aliases' hosts 'yes'
+zstyle ':dotzsh:module:ssh:agent' identities 'home-rsa' 'github' 'dreamhost'
 
 ### GNUPG module
 # Enable ssh-agent protocol emulation for gpg-agent
