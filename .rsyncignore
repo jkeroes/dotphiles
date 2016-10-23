@@ -14,7 +14,6 @@ cmus/*.pl
 ssh/id*
 ssh/dreamhost.d
 ssh/environment*
-ssh/local.d/home
 ssh/home.d
 ssh/home-rsa.d
 ssh/github.d
