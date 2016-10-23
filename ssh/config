@@ -39,6 +39,7 @@ Host git git.newdream.net
     HostName git.newdream.net
     IdentityFile ~/.ssh/dreamhost
     Port 29418
+    KexAlgorithms +diffie-hellman-group1-sha1
 
 Host josker16 josker.dreamhosters.com
     Hostname josker16.dreamhosters.com
@@ -61,7 +62,7 @@ Host ganesh ganesh.lan ganesh.local 192.168.1.20
 Host *
     User jkeroes
     ServerAliveInterval 60
-    IdentityFile ~/.ssh/home
+    IdentityFile ~/.ssh/home-rsa
     StrictHostKeyChecking ask
     ServerAliveCountMax 6
     ServerAliveInterval 30

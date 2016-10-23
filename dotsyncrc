@@ -62,6 +62,8 @@ ssh/config:.ssh/config
 ssh/known_hosts:.ssh/known_hosts
 ssh/home:.ssh/home
 ssh/home.pub:.ssh/home.pub
+ssh/home-rsa:.ssh/home-rsa
+ssh/home-rsa.pub:.ssh/home-rsa.pub
 ssh/dreamhost:.ssh/dreamhost
 ssh/dreamhost.pub:.ssh/dreamhost.pub
 ssh/github:.ssh/github
@@ -87,13 +89,13 @@ zsh/zshrc
 # Hosts to sync
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
-fiji                            git=ANY               # home
-soma                            git=ANY               # work
-viva                            git=ANY               # dj
+# fiji                            git=ANY               # home
+# soma                            git=ANY               # work
+# viva                            git=ANY               # dj
 imp                             git=ANY               # media
-keroes.com                      git=ANY               # test
-franck                          git=ANY               # aka keroes.com
-fubar                           git=ANY               # work
-yakko                           git=ANY               # work
+# keroes.com                      git=ANY               # test
+# franck                          git=ANY               # aka keroes.com
+# fubar                           git=ANY               # work
+# yakko                           git=ANY               # work
 [endhosts]
 
