@@ -58,8 +58,8 @@ perltidy/perltidyrc
 #screen/screenrc
 #shell/hushlogin
 #shell/urlview
+#ssh/known_hosts:.ssh/known_hosts
 ssh/config:.ssh/config
-ssh/known_hosts:.ssh/known_hosts
 ssh/home:.ssh/home
 ssh/home.pub:.ssh/home.pub
 ssh/home-rsa:.ssh/home-rsa
